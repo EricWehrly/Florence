@@ -1,0 +1,109 @@
+swagger: "2.0"
+info:
+  description: "Proposed extension to defined documents API to append subscriptions."
+  version: "1.0.1"
+  title: "Florence API"
+basePath: "/api"
+tags:
+- name: "documents"
+  description: "Uploaded files & metadata"
+- name: "subscriptions"
+  description: "Manage subscriptions for weekly reports"
+paths:
+  /documents:
+    post:
+      tags:
+      - "documents"
+      summary: "Creates a document with a file name and the binary data"
+      responses:
+        "405":
+          description: "Invalid input"
+  /documents/{id}:
+    get:
+      tags:
+      - "documents"
+      summary: "Gets the document db record"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+        "404":
+          description: "not found"
+    patch:
+      tags:
+      - "documents"
+      summary: "Updates the document db record (any property except _id)"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+        "404":
+          description: "not found"
+    delete:
+      tags:
+      - "documents"
+      summary: "Deletes the document db record and s3 file"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+        "404":
+          description: "not found"
+  /documents/{id}/file:
+    get:
+      tags:
+      - "documents"
+      summary: "Download the document file"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+        "404":
+          description: "not found"
+      
+    
+  /subscriptions/{trial_id}:
+    post:
+      tags:
+      - "subscriptions"
+      summary: "Subscribe the authorized user to reports for the given trial."
+      parameters:
+      - name: "trial_id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "OK"
+        "404":
+          description: "Not found"
+    delete:
+      tags:
+      - "subscriptions"
+      summary: "Remove the user from reports generated for the given trial."
+      parameters:
+      - name: "trial_id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "OK"
+        "404":
+          description: "Not found"
