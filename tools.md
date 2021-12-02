@@ -1,0 +1,4 @@
+In general, I decided to use draw.io to outline the informational flowchart, as it's so far the piece of software that works most easily for me personally. Short of just whiteboarding, this was the most fluid tool for me, personally.
+
+I started initially outlining the API in the flowchart tool, but quickly felt the pains of not being inside the swagger editor, which (again) is a free-to-use tool built for this purpose. So it seemed 'drawing out' the API in swagger was the easiest approach to take.
+Put in the given existing APIs for easy side-by-side reference, but didn't bother trying to define payloads / parameters, as that was out of scope for the exercise (and would be pointless in reality as that would already be defined, and this would just be extending onto it).
